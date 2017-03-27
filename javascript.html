@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Web Portfolio: Javascript Page</title>
+    <script src="_assets/js/myjs.js"></script>
+		<link rel="shortcut icon" href="_assets/images/favicon.png">		
+		<link type="text/css" rel="stylesheet" href="_assets/css/mystyle.css" media="screen">
+  		<style>
+  			div#clock { 
+      		background-color: #effaf8;
+      		text-align: center;
+      		padding: 10px 10px;
+      		max-width: 300px;
+      		font-size: 40px;
+      		font-family: "courier new", monospace;
+      		display: none;
+    		}
+        div.item {
+          min-width: 270px;
+          margin-right: 80px;
+          margin-left: 20px;
+          position: relative;
+          float: left;
+        }
+        div#summary{
+          clear: left;
+          text-align: left;
+          background-color: transparent;
+          border: none;
+        }
+        div#shop{
+          background-color: white;
+        }
+  		</style>
+      <script>
+        (function() {
+"use strict";
+
+var state = document.getElementById('state');
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('cart').addEventListener('submit', estimateTotal);
+  
+  var btnEstimate = document.getElementById('btn-estimate');
+  
+  btnEstimate.disabled = true;
+  
+  state.addEventListener('change', function() {
+  
+    if (state.value === '') {
+      btnEstimate.disabled = true;
+    } else {
+      btnEstimate.disabled = false;
+    }
+  
+  });
+});
+
+function estimateTotal(event) {
+  event.preventDefault();
+  
+  if (state.value === '') {
+    alert('Please choose your shipping state.');
+    
+    state.focus();
+  }
+  
+  var itemMaca = parseInt(document.getElementById('maca')
+               .value, 10) || 0,
+    itemRoll = parseInt(document.getElementById('cake')
+               .value, 10) || 0,
+    itemTart = parseInt(document.getElementById('tart')
+               .value, 10) || 0,
+    shippingState = state.value,
+    shippingMethod = document.querySelector('[name=r_method]:checked')
+                 .value || "";
+    
+  var totalQty = itemMaca + itemRoll + itemTart,
+    shippingCostPer,
+    shippingCost,
+    taxFactor = 1,
+    estimate,
+    totalItemPrice = (10 * itemMaca) + (15 * itemRoll) +
+             (5 * itemTart);
+  
+  if (shippingState === 'CA') {
+    taxFactor = 1.075;
+  }
+  
+  switch(shippingMethod) {
+    case 'fedex' :
+      shippingCostPer = 0;
+      break;
+    case 'pickup' :
+      shippingCostPer = 0;
+      break;
+  }
+  
+  shippingCost = shippingCostPer * totalQty;
+    
+  estimate = '$' + ((totalItemPrice * taxFactor) + shippingCost).toFixed(2);
+  
+  document.getElementById('txt-estimate').value = estimate;
+  
+  var results = document.getElementById('results');
+  
+  results.innerHTML = 'Total items: ' + totalQty + '<br>';
+  results.innerHTML += 'Total shipping: $' + shippingCost.toFixed(2) + '<br>';
+  results.innerHTML += 'Tax: ' + ((taxFactor - 1) * 100).toFixed(2) + '% (' + shippingState + ')';
+}
+
+})();
+      </script>
+	</head>
+  <body onload="setInterval('updateTime()',1000)">
+    <br>
+    <br>
+    <nav>
+        <ul>
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="accessibility.html">Accessibility</a>
+          </li>
+          <li>
+            <a href="usability.html">Usability</a>
+          </li>
+          <li>
+            <a href="graphics.html">Graphics</a>
+          </li>
+          <li>
+            <a href="javascript.html">Javascript</a>
+          </li>
+          <li>
+            <a href="tools.html">Tools</a>
+          </li>
+          <li>
+            <a href="video.html">Videos</a>
+          </li>
+        </ul>
+      </nav>
+
+    <br>
+
+		<center><div id="clock"></div></center>
+		<center><button onclick="toggleClock()" id="clockButton">Show clock</button></center>
+		<br>
+		<center><button onclick="showAlert()">Show alert</button></center>
+<br>
+    <hr>
+<br>
+    <center><form class="cart" id="cartmain">
+
+      <h1>Made with special ingredients! (currently out of stock :C )</h1>
+      <div class="item">
+      <h2>Mint Macarons</h2>
+      <img src="_assets/images/mintmaca.jpg" width="250px" height="250px"></img>
+      <div class="price"> $10/6-pack </div>
+      <div class="order">
+        <label for="maca">Quantity:</label>
+        <input type="number" min="0" id="maca" size="3" placeholder="0">
+      </div>
+    </div>
+    <div class="item">
+      <h2>Matcha Roll Cake</h2>
+      <img src="_assets/images/matcharoll.jpg" width="250px" height="250px"></img>
+      <div class="price"> $15/roll </div>
+      <div class="order">
+        <label for="cake">Quantity:</label>
+        <input type="number" min="0" id="cake" size="3" placeholder="0">
+      </div>
+    </div>
+    <div class="item">
+      <h2>Key Lime Tarts</h2>
+ <img src="_assets/images/limetart.jpg" width="250px" height="250px"></img>      <div class="price"> $5/3-pack </div>
+      <div class="order">
+        <label for="tart">Quantity:</label>
+        <input type="number" min="0" id="tart" size="3" placeholder="0">
+      </div>
+    </div>
+  </div>
+
+    <div id="summary">
+      <h2>Order Summary</h2>
+      <div class="states"><label for="state">State (required):</label>
+      <select id="state">
+        <option value>- select -</option>
+        <option value> NV </option>
+        <option value> CA </option>
+        <option value> WY </option>
+      </select>
+      </div>
+
+      <div class="sandh">
+        <label for="shipping">Shipping and Handling:</label>
+        <br>
+        <input type="radio" value="pickup" name="snhmethod" id="method-pickup" checked>
+        <label for="method-pickup">Pickup</label>
+        <br>
+        <input type="radio" value="fedex" name="snhmethod" id="method-pickup" checked>
+        <label for="method-pickup">FedEx ($1/item)</label>
+      </div>
+
+      <div class="extra">
+        <label for="extras">Extra:</label>
+        <br>
+        <input type="checkbox" value="YES" name="card" id="card">
+        <label for="card">Include a card</label>
+        <br>
+        <input type="checkbox" value="YES" name="gift" id="gift">
+        <label for="gift">Gift wrapping</label>
+      </div>
+
+      <div class="group notes">
+        <label for="notes">Other notes:</label><br>
+        <textarea name="notes" id="notes" rows="2" placeholder="Comments here!"></textarea>
+      </div>
+
+      <div class="calc">
+        <p>
+          <label for="btn-estimate">Click to estimate:</label><br>
+          <input type="submit" value="Estimate Total" id="btn-estimate">
+        <input type="text" id="txt-estimate" placeholder="$0.00">
+        </p>
+            
+        <div id="results"></div>
+      </div>
+    </div>
+  </form>
+  </center>
+		<!--content here-->
+	</body>
+</html>

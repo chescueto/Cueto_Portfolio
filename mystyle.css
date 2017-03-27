@@ -1,0 +1,248 @@
+/*Cheska Cueto, Period 4, Web Design I
+
+color scheme
+#effaf8 (white-teal)
+#9dd3cc (aqua)
+#bde1dd (lighter aqua)
+#537966 (dark greener teal)
+#54876b (lighter greener teal)
+#e5f9c0 (light yellow green)
+
+*/
+/*
+css reset by meyer web
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+*/
+
+
+body{
+    font-size: 1em;
+    font-weight: normal;
+    font-family: Helvetica, Arial, "Trebuchet MS", sans-serif;
+    color: #54876b; /*lighter greener teal*/
+	background-image: url('../images/patternbg.png');
+    background-color: #7AC3BA; 
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 0px;
+    border: none;
+    width: 80%;
+    min-width: 720px;
+    margin: 0 auto;
+  }
+h1{
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #537966; /*darker greener teal*/
+    text-align: center;
+    padding: 0px;
+    border: none;
+    width: auto;
+  }
+  h2{
+   color: #537966; /*darker greener teal*/
+   text-align: center;
+   font-style: italic;
+    padding: 0px;
+    border: none;
+    width: auto;
+  }
+  h3{
+    color: #537966;
+  }
+  h1,h2,h3 { 
+    font-family: Rockwell, Century, "Century Schoolbook",serif;
+  }
+  div{
+    color: #54876b;
+    padding: 0px;
+    border: solid 1px #bde1dd;
+    border-radius: 10px;
+    background-color: #bde1dd;
+    padding: 0px 20px;
+    margin: 10px 0px;
+    width: auto;
+  }
+  p{
+  	color: #54876b;
+  	padding: 0px;
+  	border: solid 1px #bde1dd;
+  	border-radius: 5px;
+  	background-color: #bde1dd;
+  	margin: 10px 0px;
+  	width: auto;   
+  }
+/*nav menu*/
+nav{
+   clear: left;
+	margin-bottom: 20px;
+  }
+nav ul { 
+  list-style-type: none;
+  }
+nav ul li { 
+  float: left;
+  margin-right: 0.5em;
+  }
+nav ul li a { 
+  padding: 0.25em 1em;
+  text-decoration: none; /* no underline */
+  background-color: #54876b; 
+  color: #bde1dd; 
+  border: 1px solid transparent;
+  border-top-left-radius: 1em 1em; /* rounded corner! */
+  border-top-right-radius: 1em 1em; /* another rounded corner! */	 
+}
+nav ul li a:hover, nav ul li a:focus{
+	background-color: #BAE0DB;
+	font-weight: bold;
+	color: #53958D;
+}
+main{
+	clear: left;
+	padding: 1em;
+}
+main, main p{
+clear: left;
+}
+  ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding: 0px;
+    border: none;
+    width: auto;
+}
+  li{
+    padding: 0px;
+    border: none;
+    width: auto;
+  }
+  ol, ul{
+    color: #54876b;
+    background-color: #bde1dd;
+    border: 1px transparent solid;
+    border-radius: 10px;
+  }
+  table{
+    border: solid 1px #000;
+    border-radius: 10px;
+  }
+  th{
+    border: solid 1px #000;
+    background-color: #cfe9e6;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 10px 10px 0px 0px;
+  }
+  td{
+    border: solid 1px #000;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  caption{
+    background-color: #effaf8;
+    padding: 1em;
+    border-width: 5px; 
+    border-style: solid;
+    border-color: #537966;
+    margin: 10px !important;
+  }
+  a { 
+    color: black;
+  }
+a:hover { 
+  color: white;
+  }
+/*pseudo classes*/
+div#skipnav{
+  position: relative;
+  width: 10em;
+  text-align: center;
+	top: 5px;
+  left: 5px;
+	right: 12.5%;
+  }
+div.info{
+  width: 43%;
+  font-size: 1.1em;
+  margin: 2%;
+  float: left;
+  position: relative;
+	padding:5px
+  }
+  p#overview{
+  background-color: #C8E7C7;
+  border: solid 1px #C8E7C7;
+  font-weight: bold;
+  vertical-align: text-top;
+  overflow: auto;
+  }
+  p.temp{
+  font-style: italic;
+  }
+  #main{
+  background-color: #9dd3cc !important;
+  color: black !important;
+  margin-top: 23px;
+  }
+ button { 
+  font-size: 1em;
+  background-color: #9dd3cc;
+  color: #537966;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  }
+  button:hover, button:focus, button:active { 
+  color: #bde1dd;
+  background-color: #537966;
+  cursor: pointer; 
+  }

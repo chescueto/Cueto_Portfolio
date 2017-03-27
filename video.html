@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Web Portfolio: Cheska's Video Page</title>
+		<link rel="shortcut icon" href="_assets/images/favicon.png">
+		<link type="text/css" rel="stylesheet" href="_assets/css/mystyle.css" media="screen">
+		<style>
+			div.vid{
+				text-align: center;
+			}
+		</style>
+		<script>
+			// create a few global variables to be used later 
+			var video, volume, speed;
+
+			function init(){
+			//initialize the player; these are the starting values
+			//first, get the media element and assign it to the video variable
+			video = document.getElementById('psa');
+
+			//get the current playbackRate from the HTML media API
+			//range is 0 to very fast, with 1 being normal playback
+			speed = video.playbackRate;
+
+			//volume range is 0 to 1
+			//set it in the middle so we havve room to move it with our buttons
+			volume = 0.5;
+			video.volume = volume;
+			}
+
+			function play () {
+				video.play();
+			}
+
+			function pause () {
+				video.pause();
+			}
+
+			function changeSpeed(direction){
+				//direction is either 'up' (faster) or 'down' (slower)
+				if (direction == 'up') {
+					if (speed < 10) {
+						//increase playbackRate
+					 speed = speed + 0.1;
+					}
+				}
+				else if (direction == 'down') {
+					if (speed > 0){
+						//decrease playbackRate
+						speed = speed - 0.1;
+					}
+				}
+				//so far all we've done is change the value of our speed variable
+				//not let's assign it to the player
+				video.playbackRate = speed;
+				}
+
+			function changeVolume(direction){
+				if (direction == 'up') {
+				// if not fully cranked yet, increase volume
+				if (volume < 0.9) {
+					volume = volume + 0.1;
+				}
+				}
+				else if (direction == 'down'){
+					//if not muted, decrease volume
+					if (volume > 0.1){
+						volume = volume - 0.1;
+					}
+				}
+				//so far all we've done is change the value of our volume variable
+				//not let's assign it to the player
+				video.volume = volume;
+				}
+				//wait until the web page has finished loading, then run the init function
+				window.onload = init;
+		</script>
+	</head>
+	<body>
+		<h1>Web Portfolio: Video</h1>
+		<nav>
+				<ul>
+					<li>
+						<a href="index.html">Home</a>
+					</li>
+					<li>
+						<a href="accessibility.html">Accessibility</a>
+					</li>
+					<li>
+						<a href="usability.html">Usability</a>
+					</li>
+					<li>
+						<a href="graphics.html">Graphics</a>
+					</li>
+					<li>
+						<a href="javascript.html">Javascript</a>
+					</li>
+					<li>
+						<a href="tools.html">Tools</a>
+					</li>
+					<li>
+						<a href="video.html">Videos</a>
+					</li>
+				</ul>
+			</nav>
+			<main id="main">
+				<div class="vid">
+					<video preload="auto" poster="_assets/video/code.jpg" controls>
+						<source src="_assets/video/code.mp4" type"video/mp4"></source>
+						<source src="_assets/video/code.webm" type"video/webm"></source>
+							<track src="_assets/video/code.vtt" kind="captions" srclang="en" default></track>
+					</video>
+				</div>
+
+				<div class="vid">
+					<h1>CTE PSA</h1>
+					<p>Here is a PSA about career and technical education.</p>
+					<video id="psa" width="640" height="400" preload="auto" poster="_assets/video/cte.png">
+						<source src="_assets/video/cte.mp4" type"video/mp4"></source>
+						<source src="_assets/video/cte.webm" type"video/webm"></source>
+							<track src="_assets/video/cte.vtt" kind="captions" srclang="en" default></track>
+					</video>
+					<div id="myplayer">
+  						<button id="right" onclick="play()">Play</button>
+  						<button onclick="pause()">Pause</button>
+  						<button onclick="changeSpeed('up')">Faster</button>
+  						<button onclick="changeSpeed('down')">Slower</button>
+  						<button onclick="changeVolume('up')">Louder</button>
+  						<button id="left"onclick="changeVolume('down')">Softer</button>
+					</div>    
+				</div>
+			</main>
+		<!--content here-->
+	</body>
+</html>
